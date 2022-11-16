@@ -19,18 +19,20 @@
     function Create(){
         const [myname, setMyname] = React.useState();
         const [myprenom, setMyprenom] = React.useState();
+        const [myville, setMyville] = React.useState('tanger');
         return <div>
             <form>
                 nom:<input type="text" required value={myname} onChange={(nm)=>setMyname(nm.target.value)}/>
                 prenom:<input type="text" value={myprenom} onChange={(pre)=>setMyprenom(pre.target.value)}/>
                 ville:
-                <select>
+                <select value='{myville}' onChange={(vill)=>setMyville(vill.target.value)}>
                     <option>tanger</option>
                     <option>fes</option>
                 </select>
                 <button>add</button>
                 <p>{myname}</p>
                 <p>{myprenom}</p>
+                <p>{myville}</p>
             </form>
         </div>
     }

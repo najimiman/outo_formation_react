@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
 </head>
 <body>
-    <div id="aa"></div>
-    <div id="bb"></div>
-    <div id="cc"></div>
+    <div id="root"></div>
     <script type="text/babel">
-        //ex1
-        const hello=<h1>hello jsx</h1>;
-        ReactDOM.render(hello,document.getElementById('aa'));
-        //ex2 function component
-        function Afficher(){
-            return <h1>hello babel</h1>;
+        function App(props){
+        return(
+            <div>
+            <h1>hello {props.name} {props.prenom}</h1> 
+            </div>
+        )
         }
-        ReactDOM.render(<Afficher/>,document.getElementById('bb'));
-        //ex3
-        const ab="iman";
-        const am=<h1>hello najim {ab}</h1>;
-        ReactDOM.render(am,document.getElementById('cc'));
+        function Person(){
+        return(
+            <div>
+                <App name='najim' prenom="iman" />
+            </div>
+        )
+        }
+    ReactDOM.render(<Person />,document.getElementById('root'));
     </script>
 </body>
 </html>

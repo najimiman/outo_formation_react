@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <div id="ro"></div>
+    <script type="text/babel">
+class App extends React.Component{
+    render(){
+      return(
+        // Properties :  name , title 
+            <div>
+                <Header name='Header' title='hello React' />  
+            </div>
+        )
+    }
+}
+class Appe extends React.Component{
+    render(){
+      return(
+        // Properties :  name , prenom 
+            <div>
+                
+                <Client name='haji' prenom='ilham' />
+            </div>
+        )
+    }
+}
+class Header extends React.Component{
+    render(props){
+return(
+        <div>    
+            <h1>{this.props.name}</h1>
+            <h2>{this.props.title}</h2>
+            </div>
+        );
+    }
+}
+ReactDOM.render(<App />,document.getElementById('root'));
+
+class Client extends React.Component{
+    render(){
+return(
+        <div>    
+            <h1>{this.props.name}</h1>
+            <h2>{this.props.prenom}</h2>
+            
+            </div>
+        );
+    }
+}
+ReactDOM.render(<Appe />,document.getElementById('ro'));
+</script>
+</body>
+</html>

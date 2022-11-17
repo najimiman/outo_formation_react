@@ -22,10 +22,10 @@
         const [myville, setMyville] = React.useState('tanger');
         return <div>
             <form>
-                nom:<input type="text" required value={myname} onChange={(nm)=>setMyname(nm.target.value)}/>
-                prenom:<input type="text" value={myprenom} onChange={(pre)=>setMyprenom(pre.target.value)}/>
+                nom:<input type="text" required value={myname} onChange={(event)=>setMyname(event.target.value)}/>
+                prenom:<input type="text" value={myprenom} onChange={(event)=>setMyprenom(event.target.value)}/>
                 ville:
-                <select value='{myville}' onChange={(vill)=>setMyville(vill.target.value)}>
+                <select value='{myville}' onChange={(event)=>setMyville(event.target.value)}>
                     <option>tanger</option>
                     <option>fes</option>
                 </select>

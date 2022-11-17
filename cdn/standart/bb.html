@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        async function Getdata(){
+            try{
+            const mytache=await axios.get('http://127.0.0.1:8000/api/mytache');
+            console.log(mytache);
+            return mytache;
+            }
+            catch(error){
+                console.error(error);
+            }
+        }
+        async function Deletedata(id){
+            try{
+            const mytache=await axios.delete('http://127.0.0.1:8000/api/mytache/'+id);
+            console.log(mytache);
+            return mytache;
+            }
+            catch(error){
+                console.error(error);
+            }
+        }
+        function Ajouter(){
+            const [nom, setNom] =React.useState();
+        const [dated, setDated] = React.useState();
+        const [datef, setDatef] = React.useState();
+        const [description, setDescription] = React.useState();
+        return <div>
+            <input type="text" value={nom} onChange={(event)=>setNom(event.target.value)}/>
+            <input type="datetime-local" value={dated} onChange={(event)=>setDated(event.target.value)}/>
+            <input type="datetime-local" value={datef} onChange={(event)=>setDatef(event.target.value)}/>
+            <input type="text" value={description} onChange={(event)=>setDescription(event.target.value)}/>
+            <button onClick={ajouter}>ajouter</button></div>
+        alert("ajouter");
+        }
+    class App extends React.Component{
+        
+        state={
+            arraytaches: []
+        }
+        componentDidMount=()=>{
+            Getdata().then(mytache=>{
+                this.setState({arraytaches:mytache.data});
+            });
+            
+          
+        }
+        deletetache=(tacheA)=>{
+            //delete from server
+            //  Deletedata(tacheA.id).then(()=>{
+                 //delete from state
+        let aa=this.state.arraytaches;
+        const index=aa.indexOf(tacheA);
+        this.setState({arraytaches});
+        // aa.splice(index,1);
+        // Getdata().then(mytache=>{
+        //         this.setState({arraytaches});
+        //     });
+        
+            //  })
+       
+        }
+        
+        render(){
+    return(
+        
+        <div>
+            <table border="">
+                <thead>
+                    <th>nom tache</th>
+                    <th>dateD</th>
+                    <th>dateF</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>
+                {this.state.arraytaches.map(tacheA=>
+            <tr>
+                <td>{tacheA.nameT}</td>
+                <td>{tacheA.dateD}</td>
+                <td>{tacheA.dateF}</td>
+                <td>{tacheA.description}</td>
+                <td><button onClick={()=>this.deletetache(tacheA)}>supprimer</button></td>
+                </tr>
+            )}
+        </tbody>
+                </table>    
+           
+        </div>
+        );
+    }
+    }
+    ReactDOM.render(<App/>,document.getElementById('root'));
+    </script>
+</body>
+</html>
